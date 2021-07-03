@@ -25,17 +25,13 @@ snake_speed = 15
 font_style = pygame.font.SysFont("lucidaconsole", 25)
 score_font = pygame.font.SysFont("lucidaconsole", 35)
  
- 
-def Your_score(score):
+def score_count(score):
     value = score_font.render("score: " + str(score), True, black)
     dis.blit(value, [0, 0])
  
- 
- 
-def our_snake(snake_block, snake_list):
+def snake(snake_block, snake_list):
     for x in snake_list:
         pygame.draw.rect(dis, snake, [x[0], x[1], snake_block, snake_block])
- 
  
 def message(msg, color):
     mesg = font_style.render(msg, True, color)
@@ -64,7 +60,7 @@ def gameLoop():
             dis.fill(red)
             msg = "YOU LOSE! Press C to play again or Q to quit"
             message(msg, white)
-            Your_score(Length_of_snake - 1)
+            score_count(Length_of_snake - 1)
             pygame.display.update()
  
             for event in pygame.event.get():
@@ -109,8 +105,8 @@ def gameLoop():
             if x == snake_Head:
                 game_close = True
  
-        our_snake(snake_block, snake_List)
-        Your_score(Length_of_snake - 1)
+        snake(snake_block, snake_List)
+        score_count(Length_of_snake - 1)
  
         pygame.display.update()
  
@@ -123,6 +119,5 @@ def gameLoop():
  
     pygame.quit()
     quit()
- 
  
 gameLoop()
